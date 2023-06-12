@@ -32,10 +32,7 @@ func (apiCfg *NewApiConfig) HandlerCreateUserFeed(w http.ResponseWriter, r *http
 		UpdatedAt: time.Now().UTC(),
 		Name:      params.Name,
 		Url:       params.URL,
-		UserID: uuid.NullUUID{
-			UUID:  user.ID,
-			Valid: true,
-		},
+		UserID:    user.ID,
 	})
 
 	if err != nil {
