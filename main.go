@@ -34,7 +34,7 @@ func main() {
 		MaxAge:           300, // Maximum value not ignored by any of maj
 	}))
 
-	router.Route("/api",apirouter.ApiRouter)
+	router.Route("/api", apirouter.ApiRouter)
 
 	server := http.Server{
 		Handler: router,

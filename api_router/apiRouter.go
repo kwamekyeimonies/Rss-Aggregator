@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/kwamekyeimonies/Rss-Aggregator/handlers"
+	"github.com/kwamekyeimonies/Rss-Aggregator/internal/database"
 )
 
 func ApiRouter(r chi.Router) {
@@ -16,8 +17,11 @@ func ApiRouter(r chi.Router) {
 	})
 	r.Get("/user", func(w http.ResponseWriter, r *http.Request) {
 		apiConfig := &handlers.NewApiConfig{}
-		// mwCfg := &middleware.NewApiConfig{}
-		// mwCfg.MiddlewareAuth(Hand)
+		
 		apiConfig.HandleGetUsers(w, r)
+	})
+	r.Post("/feed", func(w http.ResponseWriter, r *http.Request) {
+		apiCfg := &handlers.NewApiConfig{}
+		apiCfg.HandlerCreateUserFeed(w, r, database.User{})
 	})
 }

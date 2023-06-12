@@ -20,13 +20,13 @@ func (Cfg *NewApiConfig) MiddlewareAuth(handler AuthHandler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		apiKey, err := auth.GetApiKey(r.Header)
 		if err != nil {
-			helper.RespondWithError(w, 403, fmt.Sprintf("Auth error: ", err.Error()))
+			helper.RespondWithError(w, 403, fmt.Sprintf("Auth error: %v\n", err.Error()))
 			return
 		}
 
 		user, err := Cfg.PostgreSQL_DB_API().DB.GetUserByAPIKey(r.Context(), apiKey)
 		if err != nil {
-			helper.RespondWithError(w, 400, fmt.Sprintf("Auth error: ", err.Error()))
+			helper.RespondWithError(w, 400, fmt.Sprintf("Auth error: %v\n", err.Error()))
 			return
 		}
 
