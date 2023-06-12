@@ -14,4 +14,8 @@ func ApiRouter(r chi.Router) {
 		apiConfig := &handlers.NewApiConfig{}
 		apiConfig.HandleCreateuser(w, r)
 	})
+	r.Get("/user", func(w http.ResponseWriter, r *http.Request) {
+		apiConfig := &handlers.NewApiConfig{}
+		apiConfig.HandleGetUsers(w, r)
+	})
 }

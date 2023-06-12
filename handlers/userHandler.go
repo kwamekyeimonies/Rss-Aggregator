@@ -10,6 +10,7 @@ import (
 	dbconnection "github.com/kwamekyeimonies/Rss-Aggregator/dbConnection"
 	"github.com/kwamekyeimonies/Rss-Aggregator/helper"
 	"github.com/kwamekyeimonies/Rss-Aggregator/internal/database"
+	"github.com/kwamekyeimonies/Rss-Aggregator/models"
 )
 
 type NewApiConfig struct {
@@ -31,8 +32,6 @@ func (ApiCfg *NewApiConfig) HandleCreateuser(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	// ApiCfg.PostgreSQL_DB_API().DB.CreateUser()
-	// ApiCfg.DB.CreateUser
 	user, err := ApiCfg.PostgreSQL_DB_API().DB.CreateUser(r.Context(), database.CreateUserParams{
 		ID:        uuid.New(),
 		CreatedAt: time.Now().UTC(),
@@ -44,5 +43,5 @@ func (ApiCfg *NewApiConfig) HandleCreateuser(w http.ResponseWriter, r *http.Requ
 		helper.RespondWithError(w, 400, fmt.Sprintf("Couldn't create user: %v\n", err.Error()))
 	}
 
-	helper.RespondWithJson(w, 200, user)
+	helper.RespondWithJson(w, 200, models.DatabaseuserToUser(user))
 }
