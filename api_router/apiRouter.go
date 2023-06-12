@@ -16,6 +16,8 @@ func ApiRouter(r chi.Router) {
 	})
 	r.Get("/user", func(w http.ResponseWriter, r *http.Request) {
 		apiConfig := &handlers.NewApiConfig{}
+		// mwCfg := &middleware.NewApiConfig{}
+		// mwCfg.MiddlewareAuth(Hand)
 		apiConfig.HandleGetUsers(w, r)
 	})
 }
