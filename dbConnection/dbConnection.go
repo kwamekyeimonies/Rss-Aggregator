@@ -14,7 +14,7 @@ type NewApiConfig struct {
 	*models.ApiConfig
 }
 
-func (Db_apiCfg *NewApiConfig) PostgreSQL_DB_API() {
+func (Db_apiCfg *NewApiConfig) PostgreSQL_DB_API() *NewApiConfig {
 	dbURL := os.Getenv("POSTGRES_DB_Connection")
 
 	if dbURL == "" {
@@ -36,4 +36,6 @@ func (Db_apiCfg *NewApiConfig) PostgreSQL_DB_API() {
 			DB: queries,
 		},
 	}
+
+	return apiCfg
 }
