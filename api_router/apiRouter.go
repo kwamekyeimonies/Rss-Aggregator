@@ -1,11 +1,17 @@
 package apirouter
 
 import (
+	"net/http"
+
 	"github.com/go-chi/chi/v5"
-	"github.com/kwamekyeimonies/Rss-Aggregator/service"
+	"github.com/kwamekyeimonies/Rss-Aggregator/handlers"
 )
 
 func ApiRouter(r chi.Router) {
-	r.Get("/ready", service.HandlerRequest)
-	r.Get("/error", service.HandlerErr)
+	r.Get("/ready", handlers.HandlerRequest)
+	r.Get("/error", handlers.HandlerErr)
+	r.Post("/user", func(w http.ResponseWriter, r *http.Request) {
+		apiConfig := &handlers.NewApiConfig{}
+		apiConfig.HandleCreateuser(w, r)
+	})
 }
