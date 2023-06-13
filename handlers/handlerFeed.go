@@ -9,6 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/kwamekyeimonies/Rss-Aggregator/helper"
 	"github.com/kwamekyeimonies/Rss-Aggregator/internal/database"
+	"github.com/kwamekyeimonies/Rss-Aggregator/models"
 )
 
 func (apiCfg *NewApiConfig) HandlerCreateUserFeed(w http.ResponseWriter, r *http.Request, user database.User) {
@@ -40,5 +41,5 @@ func (apiCfg *NewApiConfig) HandlerCreateUserFeed(w http.ResponseWriter, r *http
 		return
 	}
 
-	helper.RespondWithJson(w, 200, userFeed)
+	helper.RespondWithJson(w, 200, models.DatabaseFeedtoFeed(userFeed))
 }

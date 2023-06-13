@@ -17,7 +17,7 @@ func ApiRouter(r chi.Router) {
 	})
 	r.Get("/user", func(w http.ResponseWriter, r *http.Request) {
 		apiConfig := &handlers.NewApiConfig{}
-		
+
 		apiConfig.HandleGetUsers(w, r)
 	})
 	r.Post("/feed", func(w http.ResponseWriter, r *http.Request) {
