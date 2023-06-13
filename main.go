@@ -31,7 +31,7 @@ func main() {
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: false,
-		MaxAge:           300, // Maximum value not ignored by any of maj
+		MaxAge:           300, 
 	}))
 
 	router.Route("/api", apirouter.ApiRouter)

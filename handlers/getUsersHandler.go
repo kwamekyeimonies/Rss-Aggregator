@@ -9,17 +9,6 @@ import (
 )
 
 func (ApiCfg *NewApiConfig) HandleGetUsers(w http.ResponseWriter, r *http.Request, user database.User) {
-	// apiKey, err := auth.GetApiKey(r.Header)
-	// if err != nil {
-	// 	helper.RespondWithError(w, 403, fmt.Sprintf("Auth error: %v\n", err.Error()))
-	// 	return
-	// }
-
-	// user, err := ApiCfg.PostgreSQL_DB_API().DB.GetUserByAPIKey(r.Context(), apiKey)
-	// if err != nil {
-	// 	helper.RespondWithError(w, 403, fmt.Sprintf("Auth Error,Reason: %v\n", err.Error()))
-	// 	return
-	// }
 
 	helper.RespondWithJson(w, 200, models.DatabaseuserToUser(user))
 }
