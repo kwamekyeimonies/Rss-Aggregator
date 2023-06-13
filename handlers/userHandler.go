@@ -17,7 +17,7 @@ type NewApiConfig struct {
 	*dbconnection.NewApiConfig
 }
 
-func (ApiCfg *NewApiConfig) HandleCreateuser(w http.ResponseWriter, r *http.Request) {
+func (DbConfig *NewApiConfig) HandleCreateuser(w http.ResponseWriter, r *http.Request) {
 	type parameters struct {
 		Name string `json:"name"`
 	}
@@ -32,7 +32,7 @@ func (ApiCfg *NewApiConfig) HandleCreateuser(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	user, err := ApiCfg.PostgreSQL_DB_API().DB.CreateUser(r.Context(), database.CreateUserParams{
+	user, err := DbConfig.PostgreSQL_DB_API().DB.CreateUser(r.Context(), database.CreateUserParams{
 		ID:        uuid.New(),
 		CreatedAt: time.Now().UTC(),
 		UpdatedAt: time.Now().UTC(),
