@@ -27,8 +27,6 @@ func (apiCfg *NewApiConfig) HandlerCreateUserFeed(w http.ResponseWriter, r *http
 		return
 	}
 
-	fmt.Println(params)
-
 	userFeed, err := apiCfg.PostgreSQL_DB_API().DB.CreatedFeed(r.Context(), database.CreatedFeedParams{
 		ID:        uuid.New(),
 		CreatedAt: time.Now().UTC(),

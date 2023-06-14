@@ -22,4 +22,5 @@ func ApiRouter(r chi.Router) {
 	r.Post("/user", apiConfig.HandleCreateuser)
 	r.Get("/user", mwConfig.MiddlewareAuth(apiConfig.HandleGetUsers))
 	r.Post("/feed", mwConfig.MiddlewareAuth(apiConfig.HandlerCreateUserFeed))
+	r.Get("/feed", apiConfig.GetAllFeeds)
 }

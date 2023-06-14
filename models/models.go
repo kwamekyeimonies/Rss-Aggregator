@@ -39,6 +39,15 @@ func DatabaseFeedtoFeed(dbFeed database.Feed) Feed {
 	}
 }
 
+func DatabaseFeedstoFeeds(dbFeeds []database.Feed) []Feed {
+	feeds := []Feed{}
+	for _, pgFeed := range dbFeeds {
+		feeds = append(feeds, DatabaseFeedtoFeed(pgFeed))
+	}
+
+	return feeds
+}
+
 func DatabaseuserToUser(dbUser database.User) User {
 	return User{
 		ID:        dbUser.ID,
